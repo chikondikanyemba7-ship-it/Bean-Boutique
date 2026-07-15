@@ -507,7 +507,6 @@ h1, h2, h3, h4 {
   transform: rotate(45deg);
 }
 
-/* Modal Popup (Home) */
 .modal-overlay {
   display: none;
   position: fixed;
