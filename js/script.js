@@ -1,3 +1,35 @@
+const slideshow = document.querySelector(".hero-slideshow");
+if (slideshow) {
+  const slides = slideshow.querySelectorAll(".slide");
+  const dots = slideshow.querySelectorAll(".dot");
+  
+  const slideBtns = slideshow.querySelectorAll(".slide-btn");
+  const prevBtn = slideBtns[0];
+  const nextBtn = slideBtns[1];
+  
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    if (index >= slides.length) currentIndex = 0;
+    else if (index < 0) currentIndex = slides.length - 1;
+    else currentIndex = index;
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("is-active", i === currentIndex);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === currentIndex);
+    });
+  }
+
+  nextBtn?.addEventListener("click", () => showSlide(currentIndex + 1));
+  prevBtn?.addEventListener("click", () => showSlide(currentIndex - 1));
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => showSlide(index));
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector(".main-nav");
